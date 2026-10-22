@@ -22,7 +22,8 @@
 
   /* 文字 */
   --font-en: "Josefin Sans", sans-serif;
-  --font-base: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  --font-heading: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", Meiryo, sans-serif; /* 見出し・ボタンなど短い文字 */
+  --font-base: Meiryo, "メイリオ", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif; /* 本文(長い文章) */
   --fs-xs: 0.75rem;   /* 12px */
   --fs-sm: 0.875rem;  /* 14px */
   --fs-base: 1rem;    /* 16px */
@@ -58,6 +59,10 @@ body {
 }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
+/* 見出しや短いラベルは丸ゴシック、長い文章はメイリオ */
+h1, h2, h3, .about__name, .btn, .tags li, .nav__list a, .work__label, .faq__item summary, .price td {
+  font-family: var(--font-heading);
+}
 :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -226,8 +231,9 @@ body.is-nav-open { overflow: hidden; }
 }
 .deco--hero-a { top: 0; right: 0; width: 26%; height: 230px; }
 .deco--hero-b { top: 0; right: 18%; width: 10%; height: 130px; opacity: 0.55; }
-.deco--hero-c { bottom: 0; left: 0; width: 24%; height: 200px; transform: scaleY(-1); }
-.line--hero { left: 26%; bottom: 40px; height: 72px; }
+/* スマホ:文章に重ならないよう、左下の飾りは小さめにしてボタンより下に置く */
+.deco--hero-c { bottom: 0; left: 0; width: 16%; height: 96px; transform: scaleY(-1); }
+.line--hero { left: calc(16% + 10px); bottom: 20px; height: 36px; }
 
 .hero__inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 24px; }
 .hero__text { text-align: center; }
@@ -257,7 +263,7 @@ body.is-nav-open { overflow: hidden; }
   .deco--hero-a { width: 160px; height: 300px; }
   .deco--hero-b { right: 130px; width: 64px; height: 190px; }
   .deco--hero-c { width: 150px; height: 300px; }
-  .line--hero { left: 190px; height: 110px; }
+  .line--hero { left: 190px; bottom: 40px; height: 110px; }
   .hero__inner {
     flex-direction: row; justify-content: center; gap: 72px;
     width: min(1000px, 100%); margin-inline: auto;
